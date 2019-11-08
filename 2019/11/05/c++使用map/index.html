@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="keywords" content="John Doe, Hexo"><meta name="description"><title>c++使用map | Hexo</title><link rel="icon" href="/images/icons/favicon-16x16.png?v=1.5.3" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=1.5.3" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.5.3"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontawesome: {"prefix":"fa"},
+  sidebar: {"offsetTop":"30px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: undefined,
+  pjax: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"Copy Success","copy_error":"Copy Error","creative_commons":"Creative Commons","copy_button":"Click to Copy"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>Home</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>Archives</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">Hexo</div><div class="header-info-subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div class="post"><header class="post-header"><h1 class="post-header-title">c++使用map</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>Posted </span><span>2019-11-05</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>updated </span><span>2019-11-05</span></span></div></header><div class="post-body"><h3 id="1-定义"><span class="heading-link">1 定义</span></h3><p><code>//std::map</code></p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt; <span class="class"><span class="keyword">class</span> <span class="title">Key</span>,//<span class="title">map</span>:</span>:key_type</span><br><span class="line">           <span class="class"><span class="keyword">class</span> <span class="title">T</span>,//<span class="title">map</span>:</span>:mapped_type</span><br><span class="line">           <span class="class"><span class="keyword">class</span> <span class="title">Compare</span>=<span class="title">less</span>&lt;key&gt;,//<span class="title">map</span>:</span>:key_compare</span><br><span class="line">           <span class="class"><span class="keyword">class</span> <span class="title">Alloc</span>=<span class="title">allocator</span>&lt;pair&lt;const key,T&gt;&gt;//<span class="title">map</span>:</span>:allocator_type</span><br><span class="line">               &gt;<span class="class"><span class="keyword">class</span> <span class="title">map</span>;</span></span><br></pre></td></tr></table></div></figure>
+
+<h3 id="2-说明"><span class="heading-link">2 说明</span></h3><p>map 是一种容器，用来存储若干，由<strong>关键值 (Key Value) 和映射值 (Mapped Value)</strong> 配对成的元素。</p>
+<p>key与mapped值存储在成员类型 value_type 中：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">const</span> Key, T&gt; value_type;</span><br></pre></td></tr></table></div></figure>
+
+<p>map 中的映射值可以使用括号运算符 (operator[]) 通过其关联的 Key 值直接访问。 </p>
+<p>map 通常使用二叉搜索树实现。 </p>
+<h3 id="3-容器属性"><span class="heading-link">3 容器属性</span></h3><ul>
+<li><strong>关联性：</strong><ul>
+<li>元素的参考地址为key</li>
+</ul>
+</li>
+<li><strong>有序性：</strong><ul>
+<li>容器中的元素按一定排序方式</li>
+</ul>
+</li>
+<li><strong>映射</strong><ul>
+<li>一个key-&gt;一个mapped</li>
+</ul>
+</li>
+<li><strong>唯一key</strong><ul>
+<li>就根函数差不多</li>
+</ul>
+</li>
+<li><strong>Allocator-aware</strong><ul>
+<li>动态分配？</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-模板参数"><span class="heading-link">4 模板参数</span></h3><ul>
+<li><h2 id="Key"><span class="heading-link">Key</span></h2></li>
+</ul>
+</div><footer class="post-footer"><div class="post-end"><span>------ </span><span>End of text, thank you for reading</span><span> ------</span></div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-author-name">Author: </span><span class="post-copyright-author-value"><a href="http://yoursite.com">John Doe</a></span></div><div class="post-copyright-link"><span class="post-copyright-link-name">Link: </span><span class="post-copyright-link-value"><a href="http://yoursite.com/2019/11/05/c++使用map/">http://yoursite.com/2019/11/05/c++使用map/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-notice-name">Copyright: </span><span class="post-copyright-notice-value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><i class="post-tags-item__i fa fa-tags"></i><a class="post-tags-item__a" href="http://yoursite.com/tags/C-map/">C++ map</a></span></div><nav class="paginator"><div class="paginator-post"><div class="paginator-post-next"><a class="paginator-post-next__a" href="/2019/11/05/由先序+中序和中序+后序遍历序列构造二叉树算法/"><span>由先序+中序和中序+后序遍历序列构造二叉树算法</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div></div><aside class="sidebar" id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义"><span class="toc-number">1.</span> <span class="toc-text">1 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-说明"><span class="toc-number">2.</span> <span class="toc-text">2 说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-容器属性"><span class="toc-number">3.</span> <span class="toc-text">3 容器属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-模板参数"><span class="toc-number">4.</span> <span class="toc-text">4 模板参数</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Key"><span class="toc-number"></span> <span class="toc-text">Key</span></a></li></div></section><!-- ov = overview --><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/avatar.png" alt="avatar"></div><p class="sidebar-ov-author__p">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state__a posts" href="/archives/"><div class="sidebar-ov-state__a--count">4</div><div class="sidebar-ov-state__a--name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span>You have read </span><span class="sidebar-reading-info-num">0</span></div><div class="sidebar-reading-line"></div></div></div></aside><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span class="fa fa-heart footer-icon"></span><span>John Doe.</span></div><div><span>Powered by <a href="http://hexo.io/" title="hexo" target="_blank" rel="noopener">hexo</a></span><span> v3.9.0.</span><span class="separator">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="stun" target="_blank" rel="noopener">stun</a></span><span> v1.5.3.</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="progress"></div></div><div class="back2top" id="back2top"><i class="back2top-icon fa fa-rocket"></i></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=1.5.3"></script><script src="/js/stun-boot.js?v=1.5.3"></script><script src="/js/scroll.js?v=1.5.3"></script><script src="/js/header.js?v=1.5.3"></script><script src="/js/sidebar.js?v=1.5.3"></script></body></html>
