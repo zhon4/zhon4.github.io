@@ -16,10 +16,10 @@ var CONFIG = {
   prompt: {"copy_success":"Copy Success","copy_error":"Copy Error","creative_commons":"Creative Commons","copy_button":"Click to Copy"}
 };
 
-window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>Home</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>Archives</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">Hexo</div><div class="header-info-subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home"><section class="post-list"><article class="post"><header class="post-header"><h1 class="post-header-title"><a class="post-header-title__a" href="/2019/11/20/图/">图</a></h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>Posted </span><span>2019-11-20</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>updated </span><span>2019-11-30</span></span></div></header><div class="post-body"><div class="post-body-excerpt"><h3><span class="heading-link">图的基本概念</span></h3>
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>Home</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>Archives</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">Hexo</div><div class="header-info-subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home"><section class="post-list"><article class="post"><header class="post-header"><h1 class="post-header-title"><a class="post-header-title__a" href="/2019/11/20/图/">图</a></h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>Posted </span><span>2019-11-20</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>updated </span><span>2019-12-03</span></span></div></header><div class="post-body"><div class="post-body-excerpt"><h3><span class="heading-link">1 图的基本概念</span></h3>
 <h4><span class="heading-link">概念</span></h4>
-顶点
 
+<p>顶点</p>
 <p>边</p>
 <p>无/有向边</p>
 <p>关联于/至：&lt;2,3&gt;&lt;4,3&gt;关联至3，&lt;3,5&gt;&lt;3,4&gt;关联于3</p>
@@ -58,10 +58,11 @@ Graph{无向图
 }
 
 <p>DiGraph{有向图<br>    Create(n)：创建一个具有n个顶点、没有边的有向图<br>    Exist(i,j)：如果存在边（i,j）则返回true，否则返回false<br>    Edges()：返回图中边的数目<br>    Vertices()：返回图中顶点的数目<br>    Add(i,j)：向图中添加边（i,j）<br>    Delete(i,j)：删除边（i,j）<br>    InDegree(i)：返回顶点i的入度<br>    OutDegree(i)：返回顶点i的出度<br>}</p>
-<h3><span class="heading-link">图的存储</span></h3>
+<hr>
+<h3><span class="heading-link">2 图的存储</span></h3>
 <h4><span class="heading-link">邻接矩阵</span></h4>(顺序存储)
-二维数组A
 
+<p>二维数组A</p>
 <p>i-&gt;j有边，A<del>i</del> <del>j</del> =1</p>
 <p>A行、列的和=顶点的度</p>
 <p>有向图：行和=出度，列和=出度</p>
@@ -98,19 +99,59 @@ Graph{无向图
 <h4><span class="heading-link">网络</span></h4>
 邻接矩阵：不存在边：∞
 
+<hr>
 <h3><span class="heading-link">图的遍历</span></h3>
 
+<p>从一个给定节点开始，访问所有可达节点，且每个顶点仅访问一次</p>
+<h4><span class="heading-link">宽度优先</span></h4>
 
+<p>1开始，1能到{2,3,4}，{2,3,4}能到{5,6,7}…</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">从顶点v 开始的宽度优先搜索</span><br><span class="line">把顶点v标记为已到达顶点；</span><br><span class="line">初始化队列Q，其中仅包含一个元素v;</span><br><span class="line">while (Q不空) &#123;</span><br><span class="line">	从队列中删除顶点w;</span><br><span class="line">	令u 为邻接于w 的顶点;</span><br><span class="line">	while (u) &#123;</span><br><span class="line">		if (u 尚未被标记) &#123;</span><br><span class="line">			把u 加入队列；</span><br><span class="line">			把u 标记为已到达顶点； &#125;</span><br><span class="line">		u = 邻接于w 的下一个顶点；</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
+<p> 复杂性分析：</p>
+<p>邻接矩阵 O(n^2^)</p>
+<p>邻接链表 Θ(Σd^out^)</p>
+<h4><span class="heading-link">深度优先</span></h4>
 
+<p>v为顶点，选择与v邻接、未标记u，递归调用……</p>
+<p>1 -&gt; 2 -&gt; 5 -&gt;8</p>
+<p>​    -&gt; 3</p>
+<p>​    -&gt; 4 -&gt;6</p>
+<p>​            -&gt; 7 -&gt;9</p>
+<h4><span class="heading-link">生成树</span></h4>
 
+<p>对连通图进行BFS(宽度优先)，所有顶点都被标记</p>
+<p>到达一个新的顶点，要通过相应的边</p>
+<p>恰好n-1条边——连通子图——生成树</p>
+<hr>
+<h3><span class="heading-link">最小生成树</span></h3>
 
-<p>​     </p>
+<h4><span class="heading-link">割、极短跨边</span></h4>(不知道干啥用的)
+
+<p>设(U; V\U)是N的割（cut）</p>
+<p>【Cut Property-A】<br> 若：(u, v)是该割的极短跨边（shortest crossing edge）<br> 则：必存在一棵包含(u, v)的MST</p>
+<p>反证：假设(u, v)未被任何MST采用…</p>
+<p>任取一棵MST，将(u, v)加入其中，于是<br> 将出现唯一的回路，且该回路必经过<br>  (u, v)以及至少另一跨边(s, t)</p>
+<p>现在，将原MST中的(s, t)替换为(u, v)…</p>
+<p>【Cut Property-B】<br> 反之，N的任一MST也必通过极短跨边联接每一割</p>
+<h4><span class="heading-link">Kruskal</span></h4>
+
+<p>对边从小到大排序、挨个加入，<code>成环</code>就跳过，直到边数有n-1</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//在一个具有n 个顶点的网络中找到一棵最小生成树</span><br><span class="line">令T为所选边的集合，初始化T=Φ</span><br><span class="line">令E为网络中边的集合</span><br><span class="line">while (E≠Φ) &amp;&amp; (|T|≠n-1) &#123;</span><br><span class="line">令(u,v)为E中代价最小的边</span><br><span class="line">E=E-&#123; (u,v) &#125; / /从E中删除边</span><br><span class="line">if ((u,v)加入T中不会产生环路) 将(u,v)加入T</span><br><span class="line">&#125;</span><br><span class="line">i f (|T| == n-1) T是最小耗费生成树</span><br><span class="line">else 网络不是连通的，不能找到生成树</span><br></pre></td></tr></table></div></figure>
+
+<h4><span class="heading-link">Prim</span></h4>
+
+<p>找到最小的边，对它的两端点连的边里头找最小</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//假设网络中至少具有一个顶点</span><br><span class="line">设T为所选择的边的集合，初始化T=Φ</span><br><span class="line">设TV为已在树中的顶点的集合，置TV=&#123;1&#125;</span><br><span class="line">令E为网络中边的集合</span><br><span class="line">while (E&lt;&gt;Φ) &amp;&amp; (|T|&lt;&gt;n-1) &#123;</span><br><span class="line">	令(u,v)为最小代价边，其中u∈TV,v∈TV</span><br><span class="line">	if (没有这种边) break</span><br><span class="line">	E=E-&#123;(u,v)&#125;//从E中删除此边</span><br><span class="line">	在T中加入边(u,v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<hr>
 <h3><span class="heading-link">最短路径</span></h3>
 <h4><span class="heading-link">单源最短路径</span></h4>
-<h5><span class="heading-link">Dijkstra算法</span></h5>
-边的权值都>0
+给定源顶点s，求它到其他任意顶点（目的顶点）的最短路径
 
+<h5><span class="heading-link">Dijkstra算法</span></h5>
+
+<p>边的权值都&gt;0</p>
 <p>时间复杂度O(n^2^)，求每一个O(n^3^)</p>
 <h5><span class="heading-link">Floyd算法</span></h5>
 点到点的距离->二维矩阵  动态规划
