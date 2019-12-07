@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="keywords" content="John Doe, Hexo"><meta name="description"><title>线性表 | Hexo</title><link rel="icon" href="/images/icons/favicon-16x16.png?v=1.5.3" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=1.5.3" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.5.3"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontawesome: {"prefix":"fa"},
+  sidebar: {"offsetTop":"30px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: undefined,
+  pjax: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"Copy Success","copy_error":"Copy Error","creative_commons":"Creative Commons","copy_button":"Click to Copy"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav"><div class="header-nav-inner"><div class="header-nav-btn fa fa-bars"></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/"><i class="fa fa-home"></i>Home</a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__a" href="/archives/"><i class="fa fa-folder-open"></i>Archives</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">Hexo</div><div class="header-info-subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content"><div class="post"><header class="post-header"><h1 class="post-header-title">线性表</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>Posted </span><span>2019-12-07</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>updated </span><span>2019-12-07</span></span></div></header><div class="post-body"><h3><span class="heading-link">线性表的定义和特点</span></h3>
+
+<h4><span class="heading-link">操作</span></h4>
+
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">LinearList &#123;</span><br><span class="line">实例(数据[D]和关系[S])</span><br><span class="line">	0或多个元素的有序集合</span><br><span class="line">操作</span><br><span class="line">	create()：   创建一个空线性表</span><br><span class="line">	destroy()：  删除表</span><br><span class="line">	empty()：    如果表为空则返回true，否则返回false</span><br><span class="line">	size()：     返回表的大小(即表中元素个数)</span><br><span class="line">  get(k)：     返回索引为k的元素</span><br><span class="line">	indexOf(x)： 返回元素x在表中的索引；如果x不在表中，返回-1</span><br><span class="line">	delete(k)：  删除表中第k个元素，索引大于k的元素的索引-1</span><br><span class="line">	insert(k,x)：在第k个元素之后插入x；索引大于k的元素索引+1</span><br><span class="line">	output()：   从起始位置到终止位置输出元素</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<hr>
+<h3><span class="heading-link">线性表的顺序存储实现</span></h3>
+
+<h4><span class="heading-link">算法分析</span></h4>
+
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="center">empty()</th>
+<th align="center">size()</th>
+<th align="center">get(k)</th>
+<th align="center">indexOf(x)</th>
+<th>insert(x)</th>
+<th>delete(k)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Θ(1)</td>
+<td align="center">Θ(1)</td>
+<td align="center">Θ(1)</td>
+<td align="center">平均O(n)</td>
+<td>平均O(n)</td>
+<td>平均O(n)</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">遍历查找</td>
+<td>增长数组，向后移动</td>
+<td>向前移动</td>
+</tr>
+</tbody></table></div>
+<h4><span class="heading-link">多个表共享空间</span></h4>
+
+<p>设置两个虚拟边界表</p>
+<p>first[0]=last[0]=-1</p>
+<p>first[m+1]=last[m+1]=MaxSize-1</p>
+<p>可使所有表的处理均相同，无需特别处理表1和表m</p>
+<hr>
+<h3><span class="heading-link">线性表的链式存储</span></h3>
+
+<h4><span class="heading-link">两种类型单链表</span></h4>
+
+<h5><span class="heading-link">带表头单链表</span></h5>
+
+<p>head-&gt;a1</p>
+<h5><span class="heading-link">不带表头单链表</span></h5>
+
+<p>first-&gt;a1</p>
+<h4><span class="heading-link">单向链表定义</span></h4>
+
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">ChainNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="keyword">friend</span> Chain&lt;T&gt;;</span><br><span class="line">   <span class="keyword">friend</span> ChainIterator&lt;T&gt;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">      T data;   <span class="comment">//数据域</span></span><br><span class="line">      ChainNode&lt;T&gt; *link;   <span class="comment">//链接域</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">chain</span> :</span> <span class="keyword">public</span> linearList&lt;T&gt;</span><br><span class="line">&#123; <span class="comment">// constructor, copy constructor and destructor</span></span><br><span class="line">      chain(<span class="keyword">int</span> initialCapacity = <span class="number">10</span>);</span><br><span class="line">      chain(<span class="keyword">const</span> chain&lt;T&gt;&amp;);</span><br><span class="line">      ~chain()</span><br><span class="line">      &#123;</span><br><span class="line">          ChainNode&lt;T&gt; *next;  <span class="comment">// 临时变量，用于控制指针</span></span><br><span class="line">          <span class="keyword">while</span> (first) </span><br><span class="line">          &#123;   <span class="comment">//当下一个节点存在</span></span><br><span class="line">              next = first-&gt;link;</span><br><span class="line">              <span class="keyword">delete</span> first;</span><br><span class="line">              first = next;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ADT methods</span></span><br><span class="line">      <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> listSize == <span class="number">0</span>;&#125;</span><br><span class="line">      <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> listSize;&#125;</span><br><span class="line">    </span><br><span class="line">      <span class="function">T&amp; <span class="title">get</span><span class="params">(<span class="keyword">int</span> theIndex)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">          <span class="comment">// move to desired node</span></span><br><span class="line">          chainNode&lt;T&gt;* currentNode = firstNode;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; theIndex; i++)</span><br><span class="line">              currentNode = currentNode-&gt;next;</span><br><span class="line">          <span class="keyword">return</span> currentNode-&gt;element;</span><br><span class="line">      &#125;</span><br><span class="line">    </span><br><span class="line">      <span class="function"><span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(<span class="keyword">const</span> T&amp; theElement)</span> <span class="keyword">const</span></span>;</span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">erase</span><span class="params">(<span class="keyword">int</span> theIndex)</span></span>;</span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> theIndex, <span class="keyword">const</span> T&amp; theElement)</span></span>;</span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">output</span><span class="params">(ostream&amp; out)</span> <span class="keyword">const</span></span>;</span><br><span class="line">   <span class="keyword">protected</span>:</span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">checkIndex</span><span class="params">(<span class="keyword">int</span> theIndex)</span> <span class="keyword">const</span></span>;  chainNode&lt;T&gt;* firstNode;  <span class="comment">// pointer to first node in chain</span></span><br><span class="line">      <span class="keyword">int</span> listSize; <span class="comment">// number of elements in list</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+
+<h5><span class="heading-link">算法分析
+
+
+
+
+empty()
+size()
+~()
+get(k)
+
+
+
+
+
+
+Θ(1)
+Θ(1)
+Θ(n)
+O(n)
+
+
+
+
+
+
+
+删除链表中所有节点</span></h5></div><footer class="post-footer"><div class="post-end"><span>------ </span><span>End of text, thank you for reading</span><span> ------</span></div><div class="post-copyright"><div class="post-copyright-author"><span class="post-copyright-author-name">Author: </span><span class="post-copyright-author-value"><a href="http://yoursite.com">John Doe</a></span></div><div class="post-copyright-link"><span class="post-copyright-link-name">Link: </span><span class="post-copyright-link-value"><a href="http://yoursite.com/2019/12/07/线性表/">http://yoursite.com/2019/12/07/线性表/</a></span></div><div class="post-copyright-notice"><span class="post-copyright-notice-name">Copyright: </span><span class="post-copyright-notice-value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><i class="post-tags-item__i fa fa-tags"></i><a class="post-tags-item__a" href="http://yoursite.com/tags/数据结构/">数据结构</a></span></div><nav class="paginator"><div class="paginator-post"><div class="paginator-post-prev"><a class="paginator-post-prev__a" href="/2019/12/07/栈/"><i class="fa fa-chevron-left"></i><span>栈</span></a></div><div class="paginator-post-next"><a class="paginator-post-next__a" href="/2019/12/04/排序/"><span>排序</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div></div><aside class="sidebar" id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">线性表的定义和特点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">1.1.</span> <span class="toc-text">操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">线性表的顺序存储实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">2.1.</span> <span class="toc-text">算法分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">2.2.</span> <span class="toc-text">多个表共享空间</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">3.</span> <span class="toc-text">线性表的链式存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">3.1.</span> <span class="toc-text">两种类型单链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">3.2.</span> <span class="toc-text">单向链表定义</span></a></li></ol></li></ol></div></section><!-- ov = overview --><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/avatar.png" alt="avatar"></div><p class="sidebar-ov-author__p">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state__a posts" href="/archives/"><div class="sidebar-ov-state__a--count">11</div><div class="sidebar-ov-state__a--name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span>You have read </span><span class="sidebar-reading-info-num">0</span></div><div class="sidebar-reading-line"></div></div></div></aside><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span class="fa fa-heart footer-icon"></span><span>John Doe.</span></div><div><span>Powered by <a href="http://hexo.io/" title="hexo" target="_blank" rel="noopener">hexo</a></span><span> v3.9.0.</span><span class="separator">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="stun" target="_blank" rel="noopener">stun</a></span><span> v1.5.3.</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="progress"></div></div><div class="back2top" id="back2top"><i class="back2top-icon fa fa-rocket"></i></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=1.5.3"></script><script src="/js/stun-boot.js?v=1.5.3"></script><script src="/js/scroll.js?v=1.5.3"></script><script src="/js/header.js?v=1.5.3"></script><script src="/js/sidebar.js?v=1.5.3"></script></body></html>
