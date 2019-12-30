@@ -1467,24 +1467,17 @@ first->a1
           
             <h3>图的基本概念</h3>
 <h4>概念</h4>
-顶点
+顶点；边；无/有向边
 
-
-
-<p>边</p>
-<p>无/有向边</p>
 <p>关联于/至：&lt;2,3&gt;&lt;4,3&gt;关联至3，&lt;3,5&gt;&lt;3,4&gt;关联于3</p>
 <p>邻接于/至:   &lt;1,2&gt;&lt;2,3&gt; 顶点2邻接于1，邻接至3  </p>
-<p>无/有向图</p>
-<p>完全图：全连上</p>
-<p>稀疏/稠密图</p>
-<p>加权有/无向图–网络</p>
+<p>无/有向图；完全图：全连上；稀疏/稠密图；加权有/无向图–网络</p>
 <p>顶点v的度：与v关联的边的数目</p>
 <p>有向图中顶点v的入度：关联至v的边的数目</p>
 <p>有向图中顶点v的出度：关联于v的边的数目</p>
 <p>路径：当且仅当对于每一个<em>j</em>（1≤<em>j</em>≤<em>k</em>）边(<em>i</em><del>j</del>, <em>i</em><del>j+1</del>)都在<em>E</em>中时，<br> 顶点序列<em>P</em>=<em>i</em><del>1</del>, <em>i</em><del>2</del>, …, <em>i</em><del>k</del>是图或有向图<em>G</em>=(<em>V</em>, <em>E</em>)中一条从<em>i</em><del>1</del>到<em>i</em><del>k</del>的路径</p>
 <p>路径长度：路径上所有边的长度之和</p>
-<p>简单路径：序列中顶点不重复出现的路径</p>
+<p><strong>简单路径：序列中顶点不重复出现的路径</strong></p>
 <p>回路：第一个顶点和最后一个顶点相同的路径</p>
 <p>无环图 ：不存在回路的图。</p>
 <p>有向无环图：不存在回路的有向图</p>
@@ -1492,23 +1485,15 @@ first->a1
 <p>连通分量：无向图中的极大连通子图</p>
 <p>强连通图：对于有向图中任意两个顶点v<del>i</del>和v<del>j</del>，如果从v<del>i</del>到v<del>j</del>和从v<del>j</del>到v<del>i</del>都有路径，则图G是强连通图</p>
 <p>强连通分量 ：有向图中的极大连通子图称为强连通分量  </p>
-<p>生成树：一个连通图的生成树含有图中全部顶点，但只有足以构成一棵树的n-1条边（包含G中所有顶点且是G的子图的树）</p>
+<p>生成树：一个连通图的生成树含有图中全部顶点，但只有足以构成一棵树的n-1条边（包含G中所有顶点且是G的子图的树），树：无环的无向连通图</p>
 <h4>特点</h4>
 Σ度数=2*边数
 
 <p>对有向图：入度和=出度和=边数</p>
 <h4>抽象数据类型</h4>
-Graph{无向图
-    Create(n)：创建一个具有n个顶点、没有边的无向图
-    Exist(i,j)：如果存在边（i,j）则返回true，否则返回false
-    Edges()：返回图中边的数目
-    Vertices()：返回图中顶点的数目
-    Add(i,j)：向图中添加边（i,j）
-    Delete(i,j)：删除边（i,j）
-    Degree(i)：返回顶点i的度
-}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Graph&#123;无向图</span><br><span class="line">	Create(n)：创建一个具有n个顶点、没有边的无向图</span><br><span class="line">	Exist(i,j)：如果存在边（i,j）</span><br><span class="line">	Edges()：返回图中边的数目</span><br><span class="line">	Vertices()：返回图中顶点的数目</span><br><span class="line">	Add(i,j)：向图中添加边（i,j）</span><br><span class="line">	Delete(i,j)：删除边（i,j）</span><br><span class="line">	Degree(i)：返回顶点i的度</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DiGraph&#123;有向图</span><br><span class="line">    Create(n)：创建一个具有n个顶点、没有边的有向图</span><br><span class="line">    Exist(i,j)：如果存在边（i,j）则返回true，否则返回false</span><br><span class="line">    Edges()：返回图中边的数目</span><br><span class="line">    Vertices()：返回图中顶点的数目</span><br><span class="line">    Add(i,j)：向图中添加边（i,j）</span><br><span class="line">    Delete(i,j)：删除边（i,j）</span><br><span class="line">    InDegree(i)：返回顶点i的入度</span><br><span class="line">    OutDegree(i)：返回顶点i的出度</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>DiGraph{有向图<br>    Create(n)：创建一个具有n个顶点、没有边的有向图<br>    Exist(i,j)：如果存在边（i,j）则返回true，否则返回false<br>    Edges()：返回图中边的数目<br>    Vertices()：返回图中顶点的数目<br>    Add(i,j)：向图中添加边（i,j）<br>    Delete(i,j)：删除边（i,j）<br>    InDegree(i)：返回顶点i的入度<br>    OutDegree(i)：返回顶点i的出度<br>}</p>
+<p>对非强连通的有向图和非连通的无向图遍历将得到生成森林</p>
 <hr>
 <h3>图的存储</h3>
 <h4>邻接矩阵</h4>(顺序存储)
@@ -1518,6 +1503,11 @@ Graph{无向图
 <p>A行、列的和=顶点的度</p>
 <p>有向图：行和=出度，列和=出度</p>
 <p>优化：位操作（取值只有0/1）</p>
+<p>时间复杂度：</p>
+<ul>
+<li>给定节点的邻接节点集合，Θ(n)</li>
+<li>求图中总的边数，Θ(n^2^) 遍历整个矩阵</li>
+</ul>
 <h4>邻接压缩表</h4>
 (顺序存储)
 
@@ -1529,7 +1519,7 @@ Graph{无向图
 <p>h=[0,3,5,8,10]</p>
 <p>优化：h取值范围0<del>2e，⌈log ~2</del> (2e+1)⌉</p>
 <p>​            l取值范围1<del>n，⌈log ~2</del> n⌉</p>
-<p>​            总空间：O((n+e)logn)</p>
+<p>​            总空间：O((n+e)logn)？为啥啊</p>
 <p>时间复杂度：增、删边：O(n+e)</p>
 <h4>邻接链表</h4>
 (链表存储)
@@ -1542,11 +1532,17 @@ Graph{无向图
 <p>[3]      -&gt;2 #-&gt;  4 #-&gt;  1 0</p>
 <p>[4]      -&gt;1 #-&gt;  3 0</p>
 <p>空间复杂度：2(n+m+1),有向图m=e，无向图m=2e</p>
-<p>时间复杂度：增、删边块</p>
+<p>时间复杂度：</p>
+<ul>
+<li>增、删边块</li>
+<li>求邻接顶点集合：Q(n)</li>
+<li>求边的总数：Q(e)</li>
+</ul>
 <h4>十字链表</h4>
 (链表存储)
 
-<p><img src="http://i2.tiimg.com/701685/934c21143e484a1c.png" alt></p>
+<p><img src="C:%5CUsers%5Czhon%5CDesktop%5CmyBlog%5Cpicture%5C%E5%9B%BE%E7%89%872.png" alt></p>
+<p>邻接矩阵适用于稠密图、邻接表适用于稀疏图</p>
 <h4>网络</h4>
 邻接矩阵：不存在边：∞
 
@@ -1557,28 +1553,26 @@ Graph{无向图
 <h4>宽度优先</h4>
 1开始，1能到{2,3,4}，{2,3,4}能到{5,6,7}...
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">从顶点v 开始的宽度优先搜索</span><br><span class="line">把顶点v标记为已到达顶点；</span><br><span class="line">初始化队列Q，其中仅包含一个元素v;</span><br><span class="line">while (Q不空) &#123;</span><br><span class="line">	从队列中删除顶点w;</span><br><span class="line">	令u 为邻接于w 的顶点;</span><br><span class="line">	while (u) &#123;</span><br><span class="line">		if (u 尚未被标记) &#123;</span><br><span class="line">			把u 加入队列；</span><br><span class="line">			把u 标记为已到达顶点； &#125;</span><br><span class="line">		u = 邻接于w 的下一个顶点；</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">从顶点v 开始的宽度优先搜索</span><br><span class="line">把顶点v标记为已到达顶点；</span><br><span class="line">初始化队列Q，其中仅包含一个元素v;</span><br><span class="line">while (Q不空) &#123;</span><br><span class="line">	从队列中删除顶点w;</span><br><span class="line">	令u 为邻接于w 的顶点;</span><br><span class="line">	while (u) &#123;</span><br><span class="line">		if (u 尚未被标记)</span><br><span class="line">        &#123;</span><br><span class="line">			把u 加入队列；</span><br><span class="line">			把u 标记为已到达顶点；</span><br><span class="line">		&#125;</span><br><span class="line">		u = 邻接于w 的下一个顶点；</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p> 复杂性分析：</p>
 <p>邻接矩阵 O(n^2^)</p>
 <p>邻接链表 Θ(Σd^out^)</p>
 <h4>深度优先</h4>
-v为顶点，选择与v邻接、未标记u，递归调用……
+v为顶点，选择与v邻接、未标记u，递归调用，对u处理好后，选择另一个与v相邻、未标记的顶点，继续搜索。若不存在，搜索中止
 
-<p>1 -&gt; 2 -&gt; 5 -&gt;8</p>
-<p>​    -&gt; 3</p>
-<p>​    -&gt; 4 -&gt;6</p>
-<p>​            -&gt; 7 -&gt;9</p>
+<p>（意思就是一条路到底，再返回之前有分叉的地方）</p>
 <h4>生成树</h4>
-对连通图进行BFS(宽度优先)，所有顶点都被标记
+对连通图进行BFS(宽度优先)（深度优先也可以），所有顶点都被标记
 
 <p>到达一个新的顶点，要通过相应的边</p>
 <p>恰好n-1条边——连通子图——生成树</p>
 <hr>
 <h3>最小生成树</h3>
-<h4>割、极短跨边</h4>(不知道干啥用的)
-设(U; V\U)是N的割（cut）
+<h4>割、极短跨边</h4>
+(不知道干啥用的)
 
+<p>设(U; V\U)是N的割（cut）</p>
 <p>【Cut Property-A】<br> 若：(u, v)是该割的极短跨边（shortest crossing edge）<br> 则：必存在一棵包含(u, v)的MST</p>
 <p>反证：假设(u, v)未被任何MST采用…</p>
 <p>任取一棵MST，将(u, v)加入其中，于是<br> 将出现唯一的回路，且该回路必经过<br>  (u, v)以及至少另一跨边(s, t)</p>
@@ -1587,12 +1581,12 @@ v为顶点，选择与v邻接、未标记u，递归调用……
 <h4>Kruskal</h4>
 对边从小到大排序、挨个加入，`成环`就跳过，直到边数有n-1
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//在一个具有n 个顶点的网络中找到一棵最小生成树</span><br><span class="line">令T为所选边的集合，初始化T=Φ</span><br><span class="line">令E为网络中边的集合</span><br><span class="line">while (E≠Φ) &amp;&amp; (|T|≠n-1) &#123;</span><br><span class="line">令(u,v)为E中代价最小的边</span><br><span class="line">E=E-&#123; (u,v) &#125; / /从E中删除边</span><br><span class="line">if ((u,v)加入T中不会产生环路) 将(u,v)加入T</span><br><span class="line">&#125;</span><br><span class="line">i f (|T| == n-1) T是最小耗费生成树</span><br><span class="line">else 网络不是连通的，不能找到生成树</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//在一个具有n 个顶点的网络中找到一棵最小生成树</span><br><span class="line">令T为所选边的集合，初始化T=Φ</span><br><span class="line">令E为网络中边的集合</span><br><span class="line">while (E≠Φ) &amp;&amp; (|T|≠n-1) &#123;</span><br><span class="line">令(u,v)为E中代价最小的边</span><br><span class="line">E=E-&#123; (u,v) &#125; / /从E中删除边</span><br><span class="line">if ((u,v)加入T中不会产生环路) 将(u,v)加入T</span><br><span class="line">&#125;</span><br><span class="line">if (|T| == n-1) T是最小耗费生成树</span><br><span class="line">else 网络不是连通的，不能找到生成树</span><br></pre></td></tr></table></figure>
 
 <h4>Prim</h4>
 找到最小的边，对它的两端点连的边里头找最小
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//假设网络中至少具有一个顶点</span><br><span class="line">设T为所选择的边的集合，初始化T=Φ</span><br><span class="line">设TV为已在树中的顶点的集合，置TV=&#123;1&#125;</span><br><span class="line">令E为网络中边的集合</span><br><span class="line">while (E&lt;&gt;Φ) &amp;&amp; (|T|&lt;&gt;n-1) &#123;</span><br><span class="line">	令(u,v)为最小代价边，其中u∈TV,v∈TV</span><br><span class="line">	if (没有这种边) break</span><br><span class="line">	E=E-&#123;(u,v)&#125;//从E中删除此边</span><br><span class="line">	在T中加入边(u,v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//假设网络中至少具有一个顶点</span><br><span class="line">设T为所选择的边的集合，初始化T=Φ</span><br><span class="line">设TV为已在树中的顶点的集合，置TV=&#123;1&#125;</span><br><span class="line">令E为网络中边的集合</span><br><span class="line">while (E&lt;&gt;Φ) &amp;&amp; (|T|&lt;&gt;n-1) &#123;</span><br><span class="line">	令(u,v)为最小代价边，其中u∈TV,v∈TV</span><br><span class="line">	if (没有这种边) break</span><br><span class="line">	E=E-&#123;(u,v)&#125;//从E中删除此边</span><br><span class="line">	在T中加入边(u,v)</span><br><span class="line">&#125;</span><br><span class="line">if (|T|==n-1) T是一棵最小生成树</span><br><span class="line">else 网络是不连通的，没有最小生成树</span><br></pre></td></tr></table></figure>
 
 <hr>
 <h3>最短路径</h3>
