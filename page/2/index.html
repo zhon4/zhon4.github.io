@@ -229,6 +229,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C++中，newdelete和mallocfree的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C++中，newdelete和mallocfree的区别/" itemprop="url">C++中，new/delete和malloc/free的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-08T14:36:50+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th align="center">delete</th>
+<th align="center">new</th>
+<th align="center">malloc</th>
+<th align="center">free</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">C++的操作符</td>
+<td align="center">C++的操作符</td>
+<td align="center">C中的函数</td>
+<td align="center">C中的函数</td>
+</tr>
+<tr>
+<td align="center">调用类的析构函数和释放内存</td>
+<td align="center">分配内存\调用类的构造函数</td>
+<td align="center">仅分配内存</td>
+<td align="center">仅释放内存</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">建立一个对象</td>
+<td align="center">分配一块内存</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">建立的对象可以用成员函数访问，不要直接访问它的地址空间</td>
+<td align="center">分配的是一块内存区域，用指针访问，可以在里面移动指针</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">指针带有类型信息</td>
+<td align="center">返回void指针</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">保留字，不需要头文件支持</td>
+<td align="center">保留字，不需要头文件支持</td>
+<td align="center">需要头文件库函数支持</td>
+<td align="center">需要头文件库函数支持</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p><del>example：</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Obj</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Obj() &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Initialization"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">    ~Obj() &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Destroy"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Initialize</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Initialization"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Destroy</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Destroy"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">UseMallocFree</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Obj *a = (Obj*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(obj));</span><br><span class="line">    a-&gt;Intialize();</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    a-&gt;Destroy();</span><br><span class="line">    <span class="built_in">free</span>(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">UseNewDelete</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Obj *a = <span class="keyword">new</span> Obj;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">delete</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数UseMallocFree中，由于malloc/free不能执行构造函数与析构函数，必须调用成员函数Initialize和Destroy来完成初始化与清除工作。函数UseNewDelete则简单得多。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/c++使用map/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -748,7 +923,7 @@ O（n）先形成一棵完全二叉树
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -761,7 +936,7 @@ O（n）先形成一棵完全二叉树
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -798,7 +973,7 @@ O（n）先形成一棵完全二叉树
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
