@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="测试数据 91234567891 6 101 2 286 5 255 7 242 7 142 3 163 4 124 7 184 5 22  代码             Kruskal 1234567891011121314151617181920212223242526272829303132333435363738394041#include&amp;lt;iostream&amp;gt;#include&amp;">
 <meta name="keywords" content="c++,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="求最小生成树">
 <meta property="og:url" content="http://yoursite.com/2020/01/03/求最小生成树/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="测试数据 91234567891 6 101 2 286 5 255 7 242 7 142 3 163 4 124 7 184 5 22  代码             Kruskal 1234567891011121314151617181920212223242526272829303132333435363738394041#include&amp;lt;iostream&amp;gt;#include&amp;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-03T11:32:57.224Z">
+<meta property="og:updated_time" content="2020-01-03T12:52:02.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="求最小生成树">
+<meta name="twitter:description" content="测试数据 91234567891 6 101 2 286 5 255 7 242 7 142 3 163 4 124 7 184 5 22  代码             Kruskal 1234567891011121314151617181920212223242526272829303132333435363738394041#include&amp;lt;iostream&amp;gt;#include&amp;">
 
 
 
@@ -259,7 +262,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-03T19:28:01+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-03T20:19:18+08:00">
                 2020-01-03
               </time>
             
@@ -297,7 +300,12 @@
       
 
       
-        
+        <p>测试数据</p>
+<figure class="highlight plain"><figcaption><span>9</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1 6 10</span><br><span class="line">1 2 28</span><br><span class="line">6 5 25</span><br><span class="line">5 7 24</span><br><span class="line">2 7 14</span><br><span class="line">2 3 16</span><br><span class="line">3 4 12</span><br><span class="line">4 7 18</span><br><span class="line">4 5 22</span><br></pre></td></tr></table></figure>
+
+<p>代码            </p>
+<p><code>Kruskal</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxe = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> fa[maxe], n, m, ans = <span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> u, v, w;</span><br><span class="line">&#125;e[maxe];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(edge a, edge b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.w&lt;b.w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span><span class="comment">//用处是看它是否成环的，nb</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (fa[x] == x) <span class="keyword">return</span> x;<span class="comment">//x的根为它本身，x就是该集的根</span></span><br><span class="line">	<span class="keyword">return</span> fa[x] = get(fa[x]);<span class="comment">//路径压缩</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		fa[i] = i;<span class="comment">//初始化</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; e[i].u &gt;&gt; e[i].v &gt;&gt; e[i].w;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(e + <span class="number">1</span>, e + <span class="number">1</span> + m, cmp);<span class="comment">//升序排序</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u = get(e[i].u);<span class="comment">//找根</span></span><br><span class="line">		<span class="keyword">int</span> v = get(e[i].v);</span><br><span class="line">		<span class="keyword">if</span> (u == v) <span class="keyword">continue</span>;<span class="comment">//continue 表示终止本次（本轮）循环，进入下一轮循环。判断它是否成环</span></span><br><span class="line">		fa[u] = v;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; e[i].u &lt;&lt; <span class="string">" "</span> &lt;&lt; e[i].v &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		ans += e[i].w;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -327,8 +335,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/31/2020plan/" rel="next" title="2020plan">
-                <i class="fa fa-chevron-left"></i> 2020plan
+              <a href="/2020/01/03/求最短路径/" rel="next" title="求最短路径">
+                <i class="fa fa-chevron-left"></i> 求最短路径
               </a>
             
           </div>
@@ -403,7 +411,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -416,7 +424,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

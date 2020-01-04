@@ -229,6 +229,369 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/20/图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/20/图/" itemprop="url">图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-20T09:29:57+08:00">
+                2019-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3>图的基本概念</h3>
+<h4>概念</h4>
+顶点；边；无/有向边
+
+<p>关联于/至：&lt;2,3&gt;&lt;4,3&gt;关联至3，&lt;3,5&gt;&lt;3,4&gt;关联于3</p>
+<p>邻接于/至:   &lt;1,2&gt;&lt;2,3&gt; 顶点2邻接于1，邻接至3  </p>
+<p>无/有向图；完全图：全连上；稀疏/稠密图；加权有/无向图–网络</p>
+<p>顶点v的度：与v关联的边的数目</p>
+<p>有向图中顶点v的入度：关联至v的边的数目</p>
+<p>有向图中顶点v的出度：关联于v的边的数目</p>
+<p>路径：当且仅当对于每一个<em>j</em>（1≤<em>j</em>≤<em>k</em>）边(<em>i</em><del>j</del>, <em>i</em><del>j+1</del>)都在<em>E</em>中时，<br> 顶点序列<em>P</em>=<em>i</em><del>1</del>, <em>i</em><del>2</del>, …, <em>i</em><del>k</del>是图或有向图<em>G</em>=(<em>V</em>, <em>E</em>)中一条从<em>i</em><del>1</del>到<em>i</em><del>k</del>的路径</p>
+<p>路径长度：路径上所有边的长度之和</p>
+<p><strong>简单路径：序列中顶点不重复出现的路径</strong></p>
+<p>回路：第一个顶点和最后一个顶点相同的路径</p>
+<p>无环图 ：不存在回路的图。</p>
+<p>有向无环图：不存在回路的有向图</p>
+<p>连通图：如果图中任意两个顶点v<del>i</del>和v<del>j</del>都是连通的，则图G是连通图</p>
+<p>连通分量：无向图中的极大连通子图</p>
+<p>强连通图：对于有向图中任意两个顶点v<del>i</del>和v<del>j</del>，如果从v<del>i</del>到v<del>j</del>和从v<del>j</del>到v<del>i</del>都有路径，则图G是强连通图</p>
+<p>强连通分量 ：有向图中的极大连通子图称为强连通分量  </p>
+<p>生成树：一个连通图的生成树含有图中全部顶点，但只有足以构成一棵树的n-1条边（包含G中所有顶点且是G的子图的树），树：无环的无向连通图</p>
+<h4>特点</h4>
+Σ度数=2*边数
+
+<p>对有向图：入度和=出度和=边数</p>
+<h4>抽象数据类型</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Graph&#123;无向图</span><br><span class="line">	Create(n)：创建一个具有n个顶点、没有边的无向图</span><br><span class="line">	Exist(i,j)：如果存在边（i,j）</span><br><span class="line">	Edges()：返回图中边的数目</span><br><span class="line">	Vertices()：返回图中顶点的数目</span><br><span class="line">	Add(i,j)：向图中添加边（i,j）</span><br><span class="line">	Delete(i,j)：删除边（i,j）</span><br><span class="line">	Degree(i)：返回顶点i的度</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DiGraph&#123;有向图</span><br><span class="line">    Create(n)：创建一个具有n个顶点、没有边的有向图</span><br><span class="line">    Exist(i,j)：如果存在边（i,j）则返回true，否则返回false</span><br><span class="line">    Edges()：返回图中边的数目</span><br><span class="line">    Vertices()：返回图中顶点的数目</span><br><span class="line">    Add(i,j)：向图中添加边（i,j）</span><br><span class="line">    Delete(i,j)：删除边（i,j）</span><br><span class="line">    InDegree(i)：返回顶点i的入度</span><br><span class="line">    OutDegree(i)：返回顶点i的出度</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对非强连通的有向图和非连通的无向图遍历将得到生成森林</p>
+<hr>
+<h3>图的存储</h3>
+<h4>邻接矩阵</h4>(顺序存储)
+二维数组A
+
+<p>i-&gt;j有边，A<del>i</del> <del>j</del> =1</p>
+<p>A行、列的和=顶点的度</p>
+<p>有向图：行和=出度，列和=出度</p>
+<p>优化：位操作（取值只有0/1）</p>
+<p>时间复杂度：</p>
+<ul>
+<li>给定节点的邻接节点集合，Θ(n)</li>
+<li>求图中总的边数，Θ(n^2^) 遍历整个矩阵</li>
+</ul>
+<h4>邻接压缩表</h4>
+(顺序存储)
+
+<p>一维数组h，l[0~x] 有向图x=e-1.无向图x=2e-1</p>
+<p>h[i]：顶点i邻接顶点集合再l中的起始位置</p>
+<p>l：保存邻接顶点集合</p>
+<p>例：A=[0 1 1 1;1 0 1 0;1 1 0 1;1 0 1 0]</p>
+<p>l=[ ^h1^ 4 2 3  ^h2^1 3  ^h3^ 2 1 4 ^h4^ 1 3  ^h5^]</p>
+<p>h=[0,3,5,8,10]</p>
+<p>优化：h取值范围0<del>2e，⌈log ~2</del> (2e+1)⌉</p>
+<p>​            l取值范围1<del>n，⌈log ~2</del> n⌉</p>
+<p>​            总空间：O((n+e)logn)？为啥啊</p>
+<p>时间复杂度：增、删边：O(n+e)</p>
+<h4>邻接链表</h4>
+(链表存储)
+
+<p>邻接表用链表保存 chain<int> h  h[i]:顶点i的邻接表</int></p>
+<p>例：A=[0 1 1 1;1 0 1 0;1 1 0 1;1 0 1 0]</p>
+<p>​       h    data                link</p>
+<p>[1]      -&gt;4 #-&gt;  2 #-&gt; 3 0</p>
+<p>[2]      -&gt;3 #-&gt;  1 0</p>
+<p>[3]      -&gt;2 #-&gt;  4 #-&gt;  1 0</p>
+<p>[4]      -&gt;1 #-&gt;  3 0</p>
+<p>空间复杂度：2(n+m+1),有向图m=e，无向图m=2e</p>
+<p>时间复杂度：</p>
+<ul>
+<li>增、删边块</li>
+<li>求邻接顶点集合：Q(n)</li>
+<li>求边的总数：Q(e)</li>
+</ul>
+<h4>十字链表</h4>
+(链表存储)
+
+<p><img src="C:%5CUsers%5Czhon%5CDesktop%5CmyBlog%5Cpicture%5C%E5%9B%BE%E7%89%872.png" alt></p>
+<p>邻接矩阵适用于稠密图、邻接表适用于稀疏图</p>
+<h4>网络</h4>
+邻接矩阵：不存在边：∞
+
+<hr>
+<h3>图的遍历</h3>
+从一个给定节点开始，访问所有可达节点，且每个顶点仅访问一次
+
+<h4>宽度优先</h4>
+1开始，1能到{2,3,4}，{2,3,4}能到{5,6,7}...
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">从顶点v 开始的宽度优先搜索</span><br><span class="line">把顶点v标记为已到达顶点；</span><br><span class="line">初始化队列Q，其中仅包含一个元素v;</span><br><span class="line">while (Q不空) &#123;</span><br><span class="line">	从队列中删除顶点w;</span><br><span class="line">	令u 为邻接于w 的顶点;</span><br><span class="line">	while (u) &#123;</span><br><span class="line">		if (u 尚未被标记)</span><br><span class="line">        &#123;</span><br><span class="line">			把u 加入队列；</span><br><span class="line">			把u 标记为已到达顶点；</span><br><span class="line">		&#125;</span><br><span class="line">		u = 邻接于w 的下一个顶点；</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 复杂性分析：</p>
+<p>邻接矩阵 O(n^2^)</p>
+<p>邻接链表 Θ(Σd^out^)</p>
+<h4>深度优先</h4>
+v为顶点，选择与v邻接、未标记u，递归调用，对u处理好后，选择另一个与v相邻、未标记的顶点，继续搜索。若不存在，搜索中止
+
+<p>（意思就是一条路到底，再返回之前有分叉的地方）</p>
+<h4>生成树</h4>
+对连通图进行BFS(宽度优先)（深度优先也可以），所有顶点都被标记
+
+<p>到达一个新的顶点，要通过相应的边</p>
+<p>恰好n-1条边——连通子图——生成树</p>
+<hr>
+<h3>最小生成树</h3>
+<h4>割、极短跨边</h4>
+(不知道干啥用的)
+
+<p>设(U; V\U)是N的割（cut）</p>
+<p>【Cut Property-A】<br> 若：(u, v)是该割的极短跨边（shortest crossing edge）<br> 则：必存在一棵包含(u, v)的MST</p>
+<p>反证：假设(u, v)未被任何MST采用…</p>
+<p>任取一棵MST，将(u, v)加入其中，于是<br> 将出现唯一的回路，且该回路必经过<br>  (u, v)以及至少另一跨边(s, t)</p>
+<p>现在，将原MST中的(s, t)替换为(u, v)…</p>
+<p>【Cut Property-B】<br> 反之，N的任一MST也必通过极短跨边联接每一割</p>
+<h4>Kruskal</h4>
+对边从小到大排序、挨个加入，`成环`就跳过，直到边数有n-1
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//在一个具有n 个顶点的网络中找到一棵最小生成树</span><br><span class="line">令T为所选边的集合，初始化T=Φ</span><br><span class="line">令E为网络中边的集合</span><br><span class="line">while (E≠Φ) &amp;&amp; (|T|≠n-1) &#123;</span><br><span class="line">令(u,v)为E中代价最小的边</span><br><span class="line">E=E-&#123; (u,v) &#125; / /从E中删除边</span><br><span class="line">if ((u,v)加入T中不会产生环路) 将(u,v)加入T</span><br><span class="line">&#125;</span><br><span class="line">if (|T| == n-1) T是最小耗费生成树</span><br><span class="line">else 网络不是连通的，不能找到生成树</span><br></pre></td></tr></table></figure>
+
+<h4>Prim</h4>
+找到最小的边，对它的两端点连的边里头找最小
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//假设网络中至少具有一个顶点</span><br><span class="line">设T为所选择的边的集合，初始化T=Φ</span><br><span class="line">设TV为已在树中的顶点的集合，置TV=&#123;1&#125;</span><br><span class="line">令E为网络中边的集合</span><br><span class="line">while (E&lt;&gt;Φ) &amp;&amp; (|T|&lt;&gt;n-1) &#123;</span><br><span class="line">	令(u,v)为最小代价边，其中u∈TV,v∈TV</span><br><span class="line">	if (没有这种边) break</span><br><span class="line">	E=E-&#123;(u,v)&#125;//从E中删除此边</span><br><span class="line">	在T中加入边(u,v)</span><br><span class="line">&#125;</span><br><span class="line">if (|T|==n-1) T是一棵最小生成树</span><br><span class="line">else 网络是不连通的，没有最小生成树</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3>最短路径</h3>
+<h4>单源最短路径</h4>
+给定源顶点s，求它到其他任意顶点（目的顶点）的最短路径
+
+<p>1)连通图中，s到每个顶点都有（至少）一条最短路径</p>
+<p>2)就同一起点s而言，任何最短路径的前缀，也是一条最短路径</p>
+<p>3)就同一起点s而言，所有最短路径的并，不含回路</p>
+<h5> Dijkstra算法 </h5>
+###### 说明
+
+<p>边的权值都&gt;0</p>
+<p>时间复杂度O(n^2^)，求每一个O(n^3^)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">S：“已求出最短路径顶点集合”，初始为&#123;s&#125;</span><br><span class="line">L=V - S</span><br><span class="line">每个步骤从L选取一个顶点v加入S</span><br><span class="line">贪心准则：v是L中距s距离最短者</span><br><span class="line">新最短路径=已有最短路径+一条边</span><br><span class="line">  每个顶点无需保存其完整路径，保存路径中它的前一顶点即可</span><br></pre></td></tr></table></figure>
+
+<h6 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h6><p>数组p：保存路径</p>
+<p>•p[i]：最短路径中顶点i的前驱顶点</p>
+<p>•从终点开始，逆向即可获取路径</p>
+<p>数组d：当前最短路径长度</p>
+<p>•i在S中，d[i]：sài的真正最短路径长度（最终结果）</p>
+<p>•i在L中，d[i]：当前最短路径长度<br> sàj(∈S)ài的路径长度（最短者）：d[j]+a[j][i] </p>
+<p>•从L中选择v加入S后，S发生变化，L中的d[i]可能变得更小，应进行更新</p>
+<h6 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h6><p>（就是铁杠的做法）</p>
+<p><img src="C:%5CUsers%5Czhon%5CDesktop%5CmyBlog%5Cpicture%5C2.png" alt></p>
+<h6 id="算法伪代码"><a href="#算法伪代码" class="headerlink" title="算法伪代码"></a>算法伪代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">初始化d[i]=a[s][i]（1≤i≤n）</span><br><span class="line">对于邻接于s的所有顶点i，置p[i]=s，对于其余的顶点置p[i]=0</span><br><span class="line">对于p[i]≠0的所有顶点建立L表</span><br><span class="line">若L为空，终止，否则转至3)</span><br><span class="line">从L中删除d值最小的顶点</span><br><span class="line">对于与i邻接的所有还未到达的顶点j，更新d[j]值为min&#123;d[j], d[i]+a[i][j]&#125;</span><br><span class="line">若d[j]发生了变化且j还未在L中，则置p[j]=i，并将j加入L，转至2</span><br></pre></td></tr></table></figure>
+
+<h6 id="无序链表实现"><a href="#无序链表实现" class="headerlink" title="无序链表实现"></a>无序链表实现</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">chain</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">int</span> b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">AdjacencyWDigraph</span>&lt;T&gt;:</span>:ShortestPaths(<span class="keyword">int</span> s,T d[], <span class="keyword">int</span> p[])</span><br><span class="line">&#123;<span class="comment">// Shortest paths from vertex s, return shortest distances in d and predecessor info in p.</span></span><br><span class="line">	<span class="keyword">if</span> (s &lt; <span class="number">1</span> || s &gt; n) <span class="keyword">throw</span> OutOfBounds();</span><br><span class="line">	Chain&lt;<span class="keyword">int</span>&gt; L; <span class="comment">// list of reachable vertices for which paths have yet to be found</span></span><br><span class="line">	ChainIterator&lt;<span class="keyword">int</span>&gt; I;</span><br><span class="line">	<span class="comment">// initialize d, p, and L</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		d[i] = a[s][i];</span><br><span class="line">		<span class="keyword">if</span> (d[i] == NoEdge) p[i] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			p[i] = s;</span><br><span class="line">			L.Insert(<span class="number">0</span>, i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// update d and p</span></span><br><span class="line">	<span class="keyword">while</span> (!L.IsEmpty()) &#123;<span class="comment">// more paths exist</span></span><br><span class="line">						  <span class="comment">// find vertex *v in L with least d</span></span><br><span class="line">		<span class="keyword">int</span> *v = I.Initialize(L);</span><br><span class="line">		<span class="keyword">int</span> *w = I.Next();</span><br><span class="line">		<span class="keyword">while</span> (w) &#123;</span><br><span class="line">			<span class="keyword">if</span> (d[*w] &lt; d[*v]) v = w;</span><br><span class="line">			w = I.Next();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> i = *v;</span><br><span class="line">		L.Delete(*v);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (a[i][j] != NoEdge &amp;&amp; (!p[j] ||</span><br><span class="line">				d[j] &gt; d[i] + a[i][j])) &#123;</span><br><span class="line">				d[j] = d[i] + a[i][j];</span><br><span class="line">				<span class="keyword">if</span> (!p[j]) L.Insert(<span class="number">0</span>, j);</span><br><span class="line">				p[j] = i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="每一对点的最短路径"><a href="#每一对点的最短路径" class="headerlink" title="每一对点的最短路径"></a>每一对点的最短路径</h3><h5> Floyd算法 </h5>
+点到点的距离->二维矩阵  动态规划
+
+<p>支持负权值的计算，不支持负权回路</p>
+<p>递归：O(n2^n^) 迭代O(n^3^)</p>
+<p>伪代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(i,j,k)：i-&gt;j的“最短路径”长度——加了限制条件，路径中顶点的最大编号为k</span><br><span class="line">//寻找最短路径的长度</span><br><span class="line">//初始化c（i，j，1）</span><br><span class="line">for  (int i=1； i &lt; = n ; i ++)</span><br><span class="line">	for (int j=1; j&lt;=n; j++)</span><br><span class="line">	   c( i ,j, 0) = a (i ,j); // a 是长度邻接矩阵</span><br><span class="line">//计算c ( i ,j, k ) ( 0 &lt; k &lt; = n )</span><br><span class="line">for(int k=1;k&lt;=n;k++)</span><br><span class="line">	for (int i=1;i&lt;=n;i++)</span><br><span class="line">	   for (int j= 1 ;j&lt; = n ;j+ + )</span><br><span class="line">		if (c(i,k,k-1)+c(k, j, k - 1) &lt; c (i, j, k - 1))</span><br><span class="line">		   c(i, j, k) = c(i, k, k - 1) + c(k, j, k - 1) ;</span><br><span class="line">		else c(i, j, k) = c (i, j, k - 1);</span><br></pre></td></tr></table></figure>
+
+<p>c(i,j,1)=min(c(i,j,0), c(i,1,0)+c(1,j,0))</p>
+<p>c(i,j,2)=min(c(i,j,1), c(i,2,1)+c(2,j,1))</p>
+<p>c(i,j,3)=min(c(i,j,2), c(i,3,2)+c(3,j,2))</p>
+<p>c(i,j,4)=min(c(i,j,3), c(i,4,3)+c(4,j,3))</p>
+<p>…</p>
+<p>示例（前驱节点可以同步更新</p>
+<p><img src="C:%5CUsers%5Czhon%5CDesktop%5CmyBlog%5Cpicture%5C3.png" alt></p>
+<p><img src="C:%5CUsers%5Czhon%5CDesktop%5CmyBlog%5Cpicture%5C4.png" alt="4"></p>
+<p><img src="C:%5CUsers%5Czhon%5CDesktop%5CmyBlog%5Cpicture%5C5.png" alt="5"></p>
+<p><img src="C:%5CUsers%5Czhon%5CDesktop%5CmyBlog%5Cpicture%5C6.png" alt="6"></p>
+<p><img src="C:%5CUsers%5Czhon%5CDesktop%5CmyBlog%5Cpicture%5C7.png" alt="7"></p>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">AdjacencyWDigraph</span>&lt;T&gt;:</span>:AllPairs(T **c, <span class="keyword">int</span> **kay)</span><br><span class="line">&#123;<span class="comment">// All pairs shortest paths.</span></span><br><span class="line"> <span class="comment">// Compute c[i][j] and kay[i][j] for all i and j.</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">         c[i][j] = a[i][j];</span><br><span class="line">         kay[i][j] = <span class="number">0</span>;</span><br><span class="line">         &#125;<span class="comment">//就初始化</span></span><br><span class="line">   <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">      c[i][i] = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// compute c[i][j] = c(i,j,k)</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++)</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            T t1 = c[i][k];</span><br><span class="line">            T t2 = c[k][j];</span><br><span class="line">            T t3 = c[i][j];</span><br><span class="line">            <span class="keyword">if</span> (t1 != NoEdge &amp;&amp; t2 != NoEdge &amp;&amp;</span><br><span class="line">               (t3 == NoEdge || t1 + t2 &lt; t3)) &#123;</span><br><span class="line">                 c[i][j] = t1 + t2;</span><br><span class="line">                 kay[i][j] = k;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">outputPath</span><span class="params">(<span class="keyword">int</span> **kay, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">// Actual code to output i to j path.</span></span><br><span class="line">   <span class="keyword">if</span> (i == j) <span class="keyword">return</span>;</span><br><span class="line">   <span class="keyword">if</span> (kay[i][j] == <span class="number">0</span>) <span class="built_in">cout</span> &lt;&lt; j &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">   <span class="keyword">else</span> &#123;outputPath(kay, i, kay[i][j]);</span><br><span class="line">         outputPath(kay, kay[i][j], j);&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">OutputPath</span>(<span class="title">T</span> **<span class="title">c</span>, <span class="title">int</span> **<span class="title">kay</span>, <span class="title">T</span> <span class="title">NoEdge</span>,</span></span><br><span class="line"><span class="class">                         <span class="title">int</span> <span class="title">i</span>, <span class="title">int</span> <span class="title">j</span>)</span></span><br><span class="line"><span class="class">&#123;</span><span class="comment">// Output shortest path from i to j.</span></span><br><span class="line">   <span class="keyword">if</span> (c[i][j] == NoEdge) &#123;</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"There is no path from "</span> &lt;&lt; i &lt;&lt; <span class="string">" to "</span></span><br><span class="line">           &lt;&lt; j &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">      <span class="keyword">return</span>;&#125;</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"The path is"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">   outputPath(kay,i,j);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5> 单源最短路径Bellman-Ford算法 </h5>
+
+<p>可检验负权回路</p>
+<p>思路：</p>
+<p>•对每个S-V尝试加入全部边。如果可以缩短距离，则认为该边为最短路径候选。<br> 每个最短路径最多有n-1条边。所以最多尝试n-1次即可以。<br> 如果第n次仍然会减少权值，则说明存在负权回路。</p>
+<p>优化：Shortest Path Faster Algorithm-SPFA</p>
+<p>•使用队列，快速检测是否已经得到最短路径，及时跳出循环</p>
+<p>O(ne)  e为边的个数</p>
+<p>不再改变当前值时跳出循环</p>
+<p>对边遍历</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Bellman_Ford</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= nodenum; ++i) <span class="comment">//初始化  </span></span><br><span class="line">        dis[i] = (i == original ? <span class="number">0</span> : MAX);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= nodenum - <span class="number">1</span>; ++i)  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= edgenum; ++j)  </span><br><span class="line">            <span class="keyword">if</span>(dis[edge[j].v] &gt; dis[edge[j].u] + edge[j].cost) <span class="comment">//尝试加入边 </span></span><br><span class="line">            &#123;  </span><br><span class="line">                dis[edge[j].v] = dis[edge[j].u] + edge[j].cost;  </span><br><span class="line">                pre[edge[j].v] = edge[j].u;  </span><br><span class="line">            &#125;  </span><br><span class="line">    <span class="keyword">bool</span> flag = <span class="number">1</span>; <span class="comment">//判断是否含有负权回路  ，再次加入一次边</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= edgenum; ++i)  </span><br><span class="line">        <span class="keyword">if</span>(dis[edge[i].v] &gt; dis[edge[i].u] + edge[i].cost)  </span><br><span class="line">        &#123;  </span><br><span class="line">            flag = <span class="number">0</span>;  </span><br><span class="line">            <span class="keyword">break</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> flag;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3>拓扑排序</h3>
+描述复杂工程：有向无环图
+
+<p>活动之间具有前后约束关系</p>
+<h4>拓扑排序</h4>
+偏序：集合中仅有部分成员之间可比较
+
+<p>全序：集合中全体成员之间均可比较</p>
+<p>拓扑排序（Topological Sort）：由某个集合上的一个偏序得到该集合上的一个全序</p>
+<h4>AOV图</h4>
+用顶点表示活动，用箭头表示活动间优先关系的有向图称为顶点活动网络 
+
+<p>顶点i在顶点j之前，意味着活动i是活动j的先决条件</p>
+<p>显然不会出现有向图</p>
+<h4>  利用贪心算法进行拓扑排序</h4>
+在有向图中选一个没有前驱的顶点且输出
+
+<p>从图中删除该顶点和所有从其发出的箭头</p>
+<p>重复上述两步，直至所有顶点均已输出，或者当前图中不存在无前驱的顶点为止</p>
+<p>算法描述：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">设n是有向图中的顶点数</span><br><span class="line">设V是一个空序列</span><br><span class="line">while (true)&#123;</span><br><span class="line">	设w不存在入边（v,w），其中顶点v不在V中</span><br><span class="line">	如果没有这样的w，break</span><br><span class="line">	把w添加到V的尾部</span><br><span class="line">&#125;</span><br><span class="line">if(V中的顶点数少于n)算法失败</span><br><span class="line">elseV是一个拓扑序列</span><br></pre></td></tr></table></figure>
+
+<h4>算法实现</h4>
+初始：V为空；InDegree保存图中顶点入度；将入度为0的顶点压栈
+
+<p>步骤：</p>
+<p>弹出栈顶顶点p，加入V；</p>
+<p>并将p的每个邻接顶点的InDegree值减1；</p>
+<p>若某个顶点的InDegree值变为0，将其压栈</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> Network::Topological(<span class="keyword">int</span> v[])</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">int</span> n = Vertices();</span><br><span class="line">   <span class="comment">// Compute in-degrees</span></span><br><span class="line">   <span class="keyword">int</span> *InDegree = <span class="keyword">new</span> <span class="keyword">int</span> [n+<span class="number">1</span>];</span><br><span class="line">   InitializePos(); <span class="comment">// graph iterator array</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="comment">// initialize</span></span><br><span class="line">      InDegree[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;<span class="comment">// 遍历所有顶点的出边，计算入度</span></span><br><span class="line">      <span class="keyword">int</span> u = Begin(i);</span><br><span class="line">      <span class="keyword">while</span> (u)</span><br><span class="line">      &#123;</span><br><span class="line">         InDegree[u]++;</span><br><span class="line">         u = NextVertex(i);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// Stack vertices with zero in-degree</span></span><br><span class="line">   LinkedStack&lt;<span class="keyword">int</span>&gt; S;</span><br><span class="line">   <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">      <span class="keyword">if</span> (!InDegree[i]) S.Add(i);</span><br><span class="line">       <span class="comment">// Generate topological order</span></span><br><span class="line">   i = <span class="number">0</span>;  <span class="comment">// cursor for array v</span></span><br><span class="line">   <span class="keyword">while</span> (!S.IsEmpty()) &#123;<span class="comment">// select from stack</span></span><br><span class="line">      <span class="keyword">int</span> w;             <span class="comment">// next vertex</span></span><br><span class="line">      S.Delete(w);</span><br><span class="line">      v[i++] = w;</span><br><span class="line">      <span class="keyword">int</span> u = Begin(w);</span><br><span class="line">      <span class="keyword">while</span> (u) &#123;<span class="comment">// update in-degrees</span></span><br><span class="line">         InDegree[u]--;</span><br><span class="line">         <span class="keyword">if</span> (!InDegree[u]) S.Add(u);</span><br><span class="line">         u = NextVertex(w);&#125;</span><br><span class="line">      &#125;</span><br><span class="line">   DeactivatePos();</span><br><span class="line">   <span class="keyword">delete</span> [] InDegree;</span><br><span class="line">   <span class="keyword">return</span> (i == n);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//时间复杂度是O(n+e)</span></span><br></pre></td></tr></table></figure>
+
+<p>•入度为0的顶点即没有前驱活动的，或前驱活动都已经完成的顶点，工程可以从这个顶点所代表的活动开始或继续</p>
+<p>•算法每输出一个顶点之后，要删去从这个顶点发出的边，这意味着这个顶点所代表的活动已经完成，对于后续顶点所代表的活动来说，该前驱活动已经完成</p>
+<p>•如果一个节点有多个直接后继，则拓扑排序的结果通常不唯一</p>
+<p>•由于AOV网络中各顶点的地位是平等的，每个顶点的编号是人为的，因此可以按照拓扑排序的结果重新安排顶点的序号，生成AOV网络的新的邻接矩阵存储表示。其中，对角线以下可以全为零。</p>
+<hr>
+<h3>关键路径</h3>
+<h4>AOE网</h4>
+一个带权的有向无环图，其中顶点表示事件，边表示活动(必须完成的工作)，权表示活动持续的时间。
+
+<h4 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h4><p>•从源点到汇点长度（时间和）最长的路径</p>
+<p>（就是在一堆有继承关系的任务中完成任务的最短时间</p>
+<h4 id="关键活动"><a href="#关键活动" class="headerlink" title="关键活动"></a>关键活动</h4><p>•源点v1àvi的最长路径长度：<br> 事件vi的最早发生时间，<br> vi发出的所有边（活动）的最早开始时间</p>
+<p>•e(i)：活动ai的最早开始时间</p>
+<p>•最迟开始时间：l(i)，前提：不影响工程进度</p>
+<p>•l(i)=e(i)：关键活动</p>
+<p>•关键路径上的活动都是关键活动</p>
+<p>•通过计算l(i)、e(i)寻找关键活动</p>
+<h4 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h4><p>事件的最早发生时间ve(j) 最迟发生时间vl(j)</p>
+<p>活动ai由边&lt;j, k&gt;表示dut(&lt;j, k&gt;)表示其持续时间，则有</p>
+<p>•e(i)=ve(j)  </p>
+<p>•含义是：活动i要想开始至少需要等待的时间</p>
+<p>•l(i)=vl(k)-dut(&lt;j, k&gt;)</p>
+<p>•含义是：活动i开始之前最多空闲的时间</p>
+<p>•由ve(0)=0向前递推 ve(j)=max{ve(i)+dut(&lt;i, j&gt;)}，&lt;i, j&gt;∈E</p>
+<p>•由vl(n-1)=ve(n-1)向后递推 vl(i)=min{vl(j)-dut(&lt;i, j&gt;)}，&lt;i, j&gt;∈E</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">算法</span><br><span class="line">Step1：从源点开始计算ve(i)，考察指向顶点i的所有边，寻找最大值ve(j)=max&#123;ve(i)+dut(&lt;i, j&gt;)&#125;，&lt;i, j&gt;∈E</span><br><span class="line">Step2：从汇点开始计算vl(i)，考察顶点i发出的所有边，寻找最小值vl(i)=min&#123;vl(j)-dut(&lt;i, j&gt;)&#125;，&lt;i, j&gt;∈E</span><br><span class="line">Step3：求每个活动的e(i)，等于活动发出顶点的ve值</span><br><span class="line">Step4：求每个活动的l(i)，等于活动指向顶点的vl值减去活动本身的持续时间</span><br><span class="line">Step5：找到那些l(i)=e(i)的活动，即为关键活动；构成的路径即为关键路径。关键路径可能不止一条。</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C++中，newdelete和mallocfree的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -923,7 +1286,7 @@ O（n）先形成一棵完全二叉树
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -936,7 +1299,7 @@ O（n）先形成一棵完全二叉树
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
