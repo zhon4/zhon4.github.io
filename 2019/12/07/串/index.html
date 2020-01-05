@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="定义  定义  是一种特殊线性表 操作   1234567string	MakeNull( ) ;bool   IsNull ( S ) ; void	In( S, a ) ;int	Len( S ) ;void	Concat( S1, S2 ) ; string	Substr( S, m, n ) ; bool	 Index( S, S1 ) ;  存储结构  顺序串  数组存储 链接串  链表">
+<meta name="description" content="定义 定义 是一种特殊线性表  操作   1234567string	MakeNull( ) ;bool   IsNull ( S ) ; void	In( S, a ) ;int	Len( S ) ;void	Concat( S1, S2 ) ; string	Substr( S, m, n ) ; bool	 Index( S, S1 ) ;  存储结构 顺序串 数组存储  链接串 链表存储">
 <meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="串">
 <meta property="og:url" content="http://yoursite.com/2019/12/07/串/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="定义  定义  是一种特殊线性表 操作   1234567string	MakeNull( ) ;bool   IsNull ( S ) ; void	In( S, a ) ;int	Len( S ) ;void	Concat( S1, S2 ) ; string	Substr( S, m, n ) ; bool	 Index( S, S1 ) ;  存储结构  顺序串  数组存储 链接串  链表">
+<meta property="og:description" content="定义 定义 是一种特殊线性表  操作   1234567string	MakeNull( ) ;bool   IsNull ( S ) ; void	In( S, a ) ;int	Len( S ) ;void	Concat( S1, S2 ) ; string	Substr( S, m, n ) ; bool	 Index( S, S1 ) ;  存储结构 顺序串 数组存储  链接串 链表存储">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-18T14:44:35.584Z">
+<meta property="og:updated_time" content="2020-01-05T13:54:32.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="串">
-<meta name="twitter:description" content="定义  定义  是一种特殊线性表 操作   1234567string	MakeNull( ) ;bool   IsNull ( S ) ; void	In( S, a ) ;int	Len( S ) ;void	Concat( S1, S2 ) ; string	Substr( S, m, n ) ; bool	 Index( S, S1 ) ;  存储结构  顺序串  数组存储 链接串  链表">
+<meta name="twitter:description" content="定义 定义 是一种特殊线性表  操作   1234567string	MakeNull( ) ;bool   IsNull ( S ) ; void	In( S, a ) ;int	Len( S ) ;void	Concat( S1, S2 ) ; string	Substr( S, m, n ) ; bool	 Index( S, S1 ) ;  存储结构 顺序串 数组存储  链接串 链表存储">
 
 
 
@@ -301,26 +301,37 @@
 
       
         <h1>定义</h1>
-
 <h2>定义</h2>
+是一种特殊线性表
 
-<p>是一种特殊线性表</p>
 <h2>操作
 </h2>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string	MakeNull( ) ;</span><br><span class="line">bool   IsNull ( S ) ; </span><br><span class="line">void	In( S, a ) ;</span><br><span class="line">int	Len( S ) ;</span><br><span class="line">void	Concat( S1, S2 ) ; </span><br><span class="line">string	Substr( S, m, n ) ; </span><br><span class="line">bool	 Index( S, S1 ) ;</span><br></pre></td></tr></table></figure>
 
 <h1>存储结构</h1>
-
 <h2>顺序串</h2>
+数组存储
 
-<p>数组存储</p>
 <h2>链接串</h2>
+链表存储
 
-<p>链表存储</p>
 <h1>应用</h1>
-
 <h2>模式匹配</h2>
+
+<p>Brute-Force算法分析  :</p>
+<p>最好情况下，平均时间复杂度为O(m+n)，最坏：O(m*n)</p>
+<p>kmp分析：</p>
+<p>分摊分析：考察整个匹配过程，while循环累计执行O(n)次</p>
+<p>令k = 2i - j，观察k在算法过程中的变化<br>  初始时，k = 0<br>  每经过一次循环，k至少增加1<br>  若if判断为true，则i、j同时加1，故k加1<br>  否则，i不变，j至少减1，故k也至少加1<br>  算法结束时，k = 2i - j £ 2(n-1) - (-1) = 2n-1</p>
+<p>同理，建立next[]也只需O(m)时间</p>
+<p>空间：O(n+m)</p>
+<p>求Next的时间复杂度为O(m)</p>
+<p>匹配字符串的复杂度为O(n)</p>
+<p>总体时间复杂度为O(m+n)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getnext</span><span class="params">(<span class="keyword">char</span> *t,<span class="keyword">int</span> next_[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> lt = <span class="built_in">strlen</span>(t);</span><br><span class="line">	next_[<span class="number">0</span>] = <span class="number">-1</span>; <span class="keyword">int</span> k = <span class="number">-1</span>,j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (j &lt; lt - <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (k == <span class="number">-1</span> || t[j] == t[k])</span><br><span class="line">		&#123;</span><br><span class="line">			j++;</span><br><span class="line">			k++;</span><br><span class="line">			next_[j] = k;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> k = next_[k];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kmp</span><span class="params">(<span class="keyword">char</span> *s, <span class="keyword">char</span> *p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> next_[<span class="number">100</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	getnext(p, next_);</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ls = <span class="built_in">strlen</span>(s), lp = <span class="built_in">strlen</span>(p);</span><br><span class="line">	<span class="keyword">while</span> (i &lt; ls &amp;&amp; j &lt; lp)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (j==<span class="number">-1</span>||s[i] == p[j])</span><br><span class="line">		&#123;</span><br><span class="line">			i++; j++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			j = next_[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (j ==lp) <span class="keyword">return</span> i - j;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> zhu[<span class="number">20</span>],zi[<span class="number">20</span>];</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; zhu &gt;&gt; zi;</span><br><span class="line">	<span class="keyword">if</span> ( kmp(zhu, zi)&lt;<span class="number">0</span>) <span class="built_in">cout</span>&lt;&lt;<span class="string">"no"</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; kmp(zhu, zi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
