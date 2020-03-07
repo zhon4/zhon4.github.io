@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="0平台：微信群 课程：nankai.yuketang.cn，每周五录播，完成作业 课件在课程里，需要chrome浏览器下载 7:3  引言（3课时）  介绍计算机系统发展历程、应用领域、发展趋势。  系统总线（3课时）  介绍系统总线的基本概念、分类、结构和总线控制逻辑。  存储器系统（9课时）  介绍主存储器的分类、工作原理、组成方式以及与CPU、外设的联系。  输入输出系统（6课时）  介绍输">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理">
+<meta property="og:url" content="http://yoursite.com/2020/02/26/计算机组成原理/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="0平台：微信群 课程：nankai.yuketang.cn，每周五录播，完成作业 课件在课程里，需要chrome浏览器下载 7:3  引言（3课时）  介绍计算机系统发展历程、应用领域、发展趋势。  系统总线（3课时）  介绍系统总线的基本概念、分类、结构和总线控制逻辑。  存储器系统（9课时）  介绍主存储器的分类、工作原理、组成方式以及与CPU、外设的联系。  输入输出系统（6课时）  介绍输">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-06T13:55:24.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机组成原理">
+<meta name="twitter:description" content="0平台：微信群 课程：nankai.yuketang.cn，每周五录播，完成作业 课件在课程里，需要chrome浏览器下载 7:3  引言（3课时）  介绍计算机系统发展历程、应用领域、发展趋势。  系统总线（3课时）  介绍系统总线的基本概念、分类、结构和总线控制逻辑。  存储器系统（9课时）  介绍主存储器的分类、工作原理、组成方式以及与CPU、外设的联系。  输入输出系统（6课时）  介绍输">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/26/计算机组成原理/">
+
+
+
+
+
+  <title>计算机组成原理 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/计算机组成原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机组成原理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-26T13:01:06+08:00">
+                2020-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="0"><a href="#0" class="headerlink" title="0"></a>0</h1><p>平台：微信群</p>
+<p>课程：nankai.yuketang.cn，每周五录播，完成作业</p>
+<p>课件在课程里，需要chrome浏览器下载</p>
+<p>7:3</p>
+<ol>
+<li>引言（3课时）</li>
+</ol>
+<p>介绍计算机系统发展历程、应用领域、发展趋势。</p>
+<ol start="2">
+<li>系统总线（3课时）</li>
+</ol>
+<p>介绍系统总线的基本概念、分类、结构和总线控制逻辑。</p>
+<ol start="3">
+<li>存储器系统（9课时）</li>
+</ol>
+<p>介绍主存储器的分类、工作原理、组成方式以及与CPU、外设的联系。</p>
+<ol start="4">
+<li>输入输出系统（6课时）</li>
+</ol>
+<p>介绍输入输出系统的组成、结构，主要分析输入输出系统与主机信息交换的控制方式。</p>
+<ol start="5">
+<li>计算机的运算方法（9课时）</li>
+</ol>
+<p>介绍计算机中的各类数据，包括无符号数、有符号数、定点数、浮点数，已经它们在计算机中的算数运算方法。</p>
+<ol start="6">
+<li>指令系统与汇编语言（9课时）</li>
+</ol>
+<p>介绍指令系统的分类、常见的数据寻址方式、指令格式以及设计指令系统时应该考虑的因素。</p>
+<ol start="7">
+<li>CPU的结构和功能（3课时）</li>
+</ol>
+<p>介绍CPU的内部结构和功能，分析指令执行全过程，介绍为提高并行性采用的指令流水线技术，介绍中断技术。</p>
+<ol start="8">
+<li>控制单元的结构功能（3课时）</li>
+</ol>
+<p>介绍控制单元的结构和功能，分析控制单元为完成各种操作命令如何控制计算机部件有次序地完成各种操作。</p>
+<ol start="9">
+<li>控制单元的设计（3课时）</li>
+</ol>
+<p>介绍采用组合逻辑法和微程序法设计控制单元的两种设计方法。</p>
+<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>第一讲内容为综述性、概念性内容，大家学习时以概念理解为主即可，从考核以及考试的角度，主要掌握作业题涉及的内容即可</p>
+<h2 id="homework"><a href="#homework" class="headerlink" title="homework"></a>homework</h2><p>1.简述 存储程序 式计算机的特点。</p>
+<ul>
+<li>计算机由五大部件组成</li>
+<li>指令和数据以同等地位存放于存储器，可按地址寻访</li>
+<li>指令和数据用二进制表示</li>
+<li>指令由操作码和地址码组成</li>
+<li>指令在存储器中按顺序存放，顺序执行</li>
+<li>以运算器为中心</li>
+</ul>
+<p>2.简述存储程序式计算机的各个部件的作用。</p>
+<ul>
+<li>运算器：算术运算，逻辑运算</li>
+<li>存储器：存放数据和程序</li>
+<li>控制器：指挥程序运行</li>
+<li>输入设备：将信息转换成机器能识别的形式</li>
+<li>输出设备：将结果转换成人们熟悉的形式</li>
+</ul>
+<p>3.控制器主要包含哪几个组成部件，各有什么作用。</p>
+<ul>
+<li>PC 存放当前欲执行指令的地址，具有计数功能（PC）+1 -&gt;PC</li>
+<li>IR 存放当前欲执行的指令</li>
+<li>CU 控制单元： 分析当前指令，发出各种微操作命令序列，以控制所有被控对象</li>
+</ul>
+<p>4.运算器主要包含哪几个组成部件，各有什么作用。</p>
+<ul>
+<li><p>ALU算术逻辑单元：进行算术逻辑运算</p>
+</li>
+<li><table>
+<thead>
+<tr>
+<th></th>
+<th>ACC累加器</th>
+<th>MQ乘商寄存器</th>
+<th>X操作数寄存器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加法</td>
+<td>被加数 和</td>
+<td></td>
+<td>加数</td>
+</tr>
+<tr>
+<td>减法</td>
+<td>被减数 差</td>
+<td></td>
+<td>减数</td>
+</tr>
+<tr>
+<td>乘法</td>
+<td>乘积高位</td>
+<td>乘数 乘积低位</td>
+<td>被乘数</td>
+</tr>
+<tr>
+<td>除法</td>
+<td>被除数 余数</td>
+<td>商</td>
+<td>除数</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>5.主存储器主要包含哪几个组成部分，各有什么作用。</p>
+<ul>
+<li>存储体：有多个存储单元，每个存储单元存放一串二进制代码</li>
+<li>MAR存储器地址寄存器：反映存储单元的个数</li>
+<li>MDR存储器数据寄存器：反映存储字长</li>
+</ul>
+<p>6.什么是存储字长；什么是机器字长，机器字长与什么有关。</p>
+<p>存储字长：存储单元中二进制代码的位数</p>
+<p>机器字长：CPU一次能处理的数据的位数，与COU中寄存器位数有关</p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>第三章不属于课程重点内容，且知识比较零散，大家不必要完全背下来。将来的考核，基本上围绕作业涉及的知识点进行，请大家注意把握。</p>
+<h2 id="homework-1"><a href="#homework-1" class="headerlink" title="homework"></a>homework</h2><ol start="4">
+<li>为什么要设置总线判优控制？常见的集中式总线控制有几种,各有何特点,哪种方式响应时间最快，哪种方式对电路故障最敏感?</li>
+<li>解释下列概念：总线宽度、总线带宽、总线复用、总线的主设备（或主模块）、总线的从设备（或从模块）、总线的传输周期和总线的通信控制。</li>
+<li>设总线的时钟频率为8MHZ，一个总线周期等于一个时钟周期。如果一个总线周期中并行传送16位数据，试问总线的带宽是多少？</li>
+<li>在一个32位的总线系统中，总线的时钟频率为66MHZ，假设总线最短传输周期为4个时钟周期，试计算总线的最大数据传输率。若想提高数据传输率，可采取什么措施？</li>
+<li>在异步串行传送系统中，字符格式为：1个起始位、8个数据位、1个校验位、2个终止位。若要求每秒传送120个字符（字符的有效数据是8位），试求传送的波特率和比特率。</li>
+</ol>
+<h1 id="4"><a href="#4" class="headerlink" title="4"></a>4</h1><p>本次课内容，有很大篇幅涉及到存储器的硬件工作细节，大家看懂即可，不必勉强记忆，考核的知识点围绕作业。注意：在本章三次课完成后，一起交作业，因此前两次课不用交作业。</p>
+<h2 id="homework-2"><a href="#homework-2" class="headerlink" title="homework"></a>homework</h2><ol>
+<li><p>计算机中哪些部件可用于存储信息，按其速度、容量和价格/位排序说明</p>
+</li>
+<li><p>存储器的层次结构主要体现在什么地方，为什么要分这些层次，计算机如何管理这些层次</p>
+</li>
+<li><p>一个容量位16Kx32位的储存器，其地址线和数据线的总和是多少？当选用下列不同规格的存储芯片时，各需要多少片</p>
+<p>1Kx4位，2Kx8位，4Kx4位，16Kx1位，4Kx8位，8Kx8位</p>
+</li>
+<li><p>设CPU共有16根地址线，8根数据线，并用$\overline{MREQ}$(低电平有效）作访存控制信号，$R/\overline{W} $作读/写命令信号（髙电平为读，低电平为写）。现有这些存储芯片:R〇M(2Kx8位,4Kx4位,8Kx8位）RAM(1Kx4位,2Kx8位,4Kx8位）及74138译码器和其他门电路（门电路自定）。<br>试从上述规格中选用合适的芯片，画出CPU和存储芯片的连接图.。要求如下:<br>(1)最小4K地址为系统程序区,4096〜16383地址范围为用户程序区。<br>(2)指出选用的存储芯片类型及数苗。<br>(3)详细画出片选逻辑。</p>
+</li>
+<li><p>写出1100、1101、1110、1111对应的汉明码</p>
+</li>
+<li><p>什么时程序访问的局限性？存储系统中哪一级采用了程序访问的局部性原理?</p>
+</li>
+<li><p>计算机中设置Cache的作用是什么？能不能把Cache的容量扩大，最后取代主存，为什么？</p>
+</li>
+<li><p>设主存量 256K 字，Cache容量为2K字，块长为4 。</p>
+<p> ( l ）设计 Cache 地址格式， Cache可装人多少块数据？</p>
+<p> ( 2 ）在直接映射方式下，设计主存地址格式。</p>
+<p> ( 3 ）在四路组相联映射方式下，设计主存地址格式。</p>
+<p> ( 4 ）在全相联映射方式下，设计主存地址格式。</p>
+<p> ( 5 ）若存储字长为 32 位，存储器按字节寻址，写出上述三种映射方式下主存的地址格式。</p>
+</li>
+<li><p>设某机主存容量为4MB，Cache容量为16KB，每字块有8个字，每字32位，设计一个四路组相联映射（即Cache每组内共有4个字块）的Cache组织</p>
+<p>（1）画出主存地址字段中各段的位数。</p>
+<p>（2）设Cache的初态为空，CPU依次从主存第0，1，2，…,89号单元读出90个字（主存一次读出一个字），并重复按此次序读8次，问命中率是多少</p>
+<p>（3）若Cache的速度时主存的6倍，试问有Cache和无Cache享笔，速度约提高多少倍</p>
+</li>
+<li><p>简要说明提高存访速度可采取的措施。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/26/算法导论/" rel="next" title="算法导论">
+                <i class="fa fa-chevron-left"></i> 算法导论
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/26/实用英语教学/" rel="prev" title="实用英语教学">
+                实用英语教学 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0"><span class="nav-number">1.</span> <span class="nav-text">0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-number">2.</span> <span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#homework"><span class="nav-number">2.1.</span> <span class="nav-text">homework</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2"><span class="nav-number">3.</span> <span class="nav-text">2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3"><span class="nav-number">4.</span> <span class="nav-text">3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#homework-1"><span class="nav-number">4.1.</span> <span class="nav-text">homework</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4"><span class="nav-number">5.</span> <span class="nav-text">4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#homework-2"><span class="nav-number">5.1.</span> <span class="nav-text">homework</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
